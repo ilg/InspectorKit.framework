@@ -35,9 +35,15 @@
 }
 
 @property BOOL resizable;
+@property BOOL collapsed;
 @property float minHeight;
 @property float maxHeight;
 
 - (IBAction) toggleCollapsed:(id)sender;
+
+- (NSString *)title;
+- (float)height;
+- (void)setHeight:(float)theHeight;
+
 
 @end

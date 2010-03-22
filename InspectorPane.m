@@ -24,6 +24,7 @@
 @implementation InspectorPane
 
 @synthesize resizable;
+@synthesize collapsed;
 @synthesize minHeight;
 @synthesize maxHeight;
 
@@ -152,6 +153,29 @@
 - (InspectorPaneContainer*) container {
 	return (InspectorPaneContainer*)[self superview];
 }
+
+- (NSString *)title {
+	return [titleTextField stringValue];
+}
+
+- (float)height {
+	return uncollapsedHeight;
+}
+
+- (void)setHeight:(float)theHeight {
+	NSRect frame = [self frame];
+	frame.size.height = theHeight;
+	uncollapsedHeight = theHeight;
+	[self setFrame:frame];
+	[self setNeedsDisplay:YES];
+}
+
+- (void)setCollapsed:(BOOL)newState {
+	if (newState != collapsed) {
+		[self toggleCollapsedWithAnimation:NO];
+	}
+}
+
 
 // MARK: -
 // MARK: Resizable methods
