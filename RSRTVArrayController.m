@@ -54,7 +54,7 @@ NSString *kRSRTVMovedRowsType = @"com.red-sweater.RSRTVArrayController";
 	return [[[self arrangedObjects] objectAtIndex:0] conformsToProtocol:@protocol(NSCopying)];
 }
 
-- (NSDragOperation)tableView:(NSTableView*)tv validateDrop:(id <NSDraggingInfo>)info proposedRow:(int)row proposedDropOperation:(NSTableViewDropOperation)op
+- (NSDragOperation)tableView:(NSTableView*)tv validateDrop:(id <NSDraggingInfo>)info proposedRow:(NSUInteger)row proposedDropOperation:(NSTableViewDropOperation)op
 {
     NSDragOperation dragOp = NSDragOperationNone;
     
@@ -78,7 +78,7 @@ NSString *kRSRTVMovedRowsType = @"com.red-sweater.RSRTVArrayController";
     return dragOp;
 }
 
-- (BOOL)tableView:(NSTableView*)tv acceptDrop:(id <NSDraggingInfo>)info row:(int)row dropOperation:(NSTableViewDropOperation)op
+- (BOOL)tableView:(NSTableView*)tv acceptDrop:(id <NSDraggingInfo>)info row:(NSUInteger)row dropOperation:(NSTableViewDropOperation)op
 {
     if (row < 0)
 	{
@@ -90,7 +90,7 @@ NSString *kRSRTVMovedRowsType = @"com.red-sweater.RSRTVArrayController";
     {		
 		NSArray *rows = [[info draggingPasteboard] propertyListForType:kRSRTVMovedRowsType];
 		NSIndexSet *indexSet = [self indexSetFromRows:rows];
-		int rowsAbove = 0;
+		NSUInteger rowsAbove = 0;
 		
 		if (([info draggingSourceOperationMask] == NSDragOperationCopy) && [self tableObjectsSupportCopying])
 		{
@@ -115,14 +115,14 @@ NSString *kRSRTVMovedRowsType = @"com.red-sweater.RSRTVArrayController";
     return NO;
 }
 
--(void) copyObjectsInArrangedObjectsFromIndexes:(NSIndexSet*)indexSet toIndex:(unsigned int)insertIndex
+-(void) copyObjectsInArrangedObjectsFromIndexes:(NSIndexSet*)indexSet toIndex:(NSUInteger)insertIndex
 {	
     NSArray		*objects = [self arrangedObjects];
-	int			copyFromIndex = [indexSet lastIndex];
+	NSUInteger	copyFromIndex = [indexSet lastIndex];
 	
-    int			aboveInsertIndexCount = 0;
+    NSUInteger	aboveInsertIndexCount = 0;
     id			object;
-    int			copyIndex;
+    NSUInteger	copyIndex;
 	
     while (NSNotFound != copyFromIndex)
 	{
@@ -143,15 +143,15 @@ NSString *kRSRTVMovedRowsType = @"com.red-sweater.RSRTVArrayController";
     }
 }
 
--(void) moveObjectsInArrangedObjectsFromIndexes:(NSIndexSet*)indexSet toIndex:(unsigned int)insertIndex
+-(void) moveObjectsInArrangedObjectsFromIndexes:(NSIndexSet*)indexSet toIndex:(NSUInteger)insertIndex
 {
 	
     NSArray		*objects = [self arrangedObjects];
-	int			index = [indexSet lastIndex];
+	NSUInteger	index = [indexSet lastIndex];
 	
-    int			aboveInsertIndexCount = 0;
+    NSUInteger	aboveInsertIndexCount = 0;
     id			object;
-    int			removeIndex;
+    NSUInteger	removeIndex;
 	
     while (NSNotFound != index)
 	{
@@ -193,10 +193,10 @@ NSString *kRSRTVMovedRowsType = @"com.red-sweater.RSRTVArrayController";
 }
 
 
-- (int)rowsAboveRow:(int)row inIndexSet:(NSIndexSet *)indexSet
+- (NSUInteger)rowsAboveRow:(NSUInteger)row inIndexSet:(NSIndexSet *)indexSet
 {
-    unsigned currentIndex = [indexSet firstIndex];
-    int i = 0;
+    NSUInteger currentIndex = [indexSet firstIndex];
+    NSUInteger i = 0;
     while (currentIndex != NSNotFound)
     {
 		if (currentIndex < row) { i++; }
