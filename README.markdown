@@ -17,3 +17,7 @@ InspectorKit created by Steven Degutis - [www.degutis.org](http://www.degutis.or
 You can also find my video tutorials and other resources on how to learn programming for the Mac and iPhone, at [www.TeachMeCocoa.com](http://www.teachmecocoa.com)
 
 I am available for contracting work, check out my site at [hire.degutis.org](http://hire.degutis.org).
+
+## Modifications in ilg's fork of InspectorKit
+
+My modifications are relatively minor and I release all claim to them such that they can be integrated into InspectorKit without any change in the existing InspectorKit license and licensing/crediting requirements.
