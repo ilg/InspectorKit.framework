@@ -40,7 +40,7 @@
 				if ([subview isKindOfClass:[InspectorPane class]]) {
 					NSData *viewData = [NSKeyedArchiver archivedDataWithRootObject:subview];
 					InspectorPane *pane = [NSKeyedUnarchiver unarchiveObjectWithData:viewData];
-					NSLog(@"%@", pane);
+//					NSLog(@"%@", pane);
 					
 					[pane setFrame:NSMakeRect(0, 0, 100, 100)];
 					

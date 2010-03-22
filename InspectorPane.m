@@ -83,7 +83,7 @@
 	if (resizable)
 		NSDivideRect(bodyFrame, &resizingHandleFrame, &bodyFrame, NSHeight(resizingHandleFrame) + 1, NSMinYEdge);
 	
-	NSLog(@"%@", NSStringFromRect(bodyFrame));
+//	NSLog(@"%@", NSStringFromRect(bodyFrame));
 	
 	[paneBody setFrame:bodyFrame];
 	[self setNeedsDisplay:YES];
