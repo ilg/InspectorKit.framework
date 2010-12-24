@@ -120,18 +120,20 @@
 - (void) repositionViewsIgnoringView:(NSView*)viewToIgnore {
 	float top = 0.0;
 	for (NSView *view in [[self subviews] objectEnumerator]) {
-		NSRect newFrame = [view frame];
-		newFrame.origin.y = [self frame].size.height - (newFrame.size.height + top);
-		
-		if (view == viewToIgnore)
-			[view setPostsFrameChangedNotifications:NO];
-		
-		[view setFrame:newFrame];
-		
-		if (view == viewToIgnore)
-			[view setPostsFrameChangedNotifications:YES];
-		
-		top += newFrame.size.height;
+		if (![view isHidden]) {
+			NSRect newFrame = [view frame];
+			newFrame.origin.y = [self frame].size.height - (newFrame.size.height + top);
+			
+			if (view == viewToIgnore)
+				[view setPostsFrameChangedNotifications:NO];
+			
+			[view setFrame:newFrame];
+			
+			if (view == viewToIgnore)
+				[view setPostsFrameChangedNotifications:YES];
+			
+			top += newFrame.size.height;
+		}
 	}
 	
 	NSView *contentView = [self superview];

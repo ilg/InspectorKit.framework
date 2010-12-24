@@ -21,6 +21,11 @@
 - (void) addHeightToSize:(float)amount;
 @end
 
+@interface InspectorPaneContainer (PrivateForInspectorPane)
+- (void)repositionViewsIgnoringView:(id)view;
+@end
+
+
 @implementation InspectorPane
 
 @synthesize resizable;
@@ -174,6 +179,12 @@
 	if (newState != collapsed) {
 		[self toggleCollapsedWithAnimation:NO];
 	}
+}
+
+- (void)setHidden:(BOOL)flag
+{
+	[super setHidden:flag];
+	[[self container] repositionViewsIgnoringView:nil];
 }
 
 
